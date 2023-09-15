@@ -15,13 +15,12 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 
 #Choose what data to import and condition to analyse
-file_name = "data/mi_df_py_feat_happiness.csv"
+file_name = "data/mi_df_py_feat_happiness_all_manipulated_pairs.csv"
 
 
 #read data
 data = read.table(file_name, header=TRUE,sep=',')
 head(data)
-
 
 
 #defining outcomes
@@ -44,9 +43,9 @@ other_manipulated		            <- as.factor(data$other_manipulated)
 participant_manipulated		      <- as.factor(data$participant_manipulated)
 male_id		          <- as.factor(data$male_id)
 female_id		        <- as.factor(data$female_id)
-u_cond		         <- paste(data$female_condition, data$male_condition)
+u_cond		          <- paste(data$female_condition, data$male_condition)
 
-clean_data=data.frame( female_id, male_id, male_condition, female_condition, dyad, sex, participant_manipulated, other_manipulated,  u_cond, mi, mean_corr, max_corr )
+clean_data=data.frame( female_id, male_id, male_condition, female_condition, dyad, sex, participant_manipulated, other_manipulated,  u_cond, mi, max_corr )
 head(clean_data)
 
 # Keep only what participants see and what they produce
@@ -55,7 +54,7 @@ clean_data = clean_data[clean_data$participant_manipulated=="False",]
 
 reduced_df = clean_data %>%
   group_by(dyad, male_id, female_id, male_condition, female_condition, other_manipulated, participant_manipulated, u_cond) %>%
-  summarise_at(c("mi", "mean_corr", "max_corr"), mean, na.rm = TRUE)
+  summarise_at(c("mi", "max_corr"), mean, na.rm = TRUE)
 
 
 # ---------------------------- #
@@ -66,7 +65,7 @@ reduced_df = clean_data %>%
 nul<- lmer( mi ~ 1            	     + (1 | male_id)+ (1 | female_id) , data= reduced_df, REML = FALSE )
 v0 <- lmer( mi ~ male_condition      + (1 | male_id)+ (1 | female_id) , data= reduced_df, REML = FALSE )
 v1 <- lmer( mi ~ female_condition    + (1 | male_id)+ (1 | female_id) , data= reduced_df, REML = FALSE )
-v2 <- lmer( mi ~ other_manipulated    + (1 | male_id)+ (1 | female_id) , data= reduced_df, REML = FALSE )
+v2 <- lmer( mi ~ other_manipulated   + (1 | male_id)+ (1 | female_id) , data= reduced_df, REML = FALSE )
 
 aov.out = anova(nul,v0)
 aov.out
@@ -198,3 +197,4 @@ aov.out
 bm <- lmer( max_corr  ~ u_cond  + (1 | male_id) + (1 | female_id) , data= reduced_df, REML = FALSE )
 plot_model( bm, type = "pred", terms = c("u_cond") )
 summary(bm)
+
