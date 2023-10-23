@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Here are the analyses scripts of the article "Increasing attraction during speed-dating with smile transformation filters", by 
+In this repository wyou will find the analyses scripts of the article "Increasing attraction during speed-dating with smile transformation filters", by 
 Pablo Arias Sarah (1,2,3,+), Daniel Bedoya(2), Christoph Daube(3), Jean-Julien Aucouturier (4), Lars Hall (1), Petter Johansson (1) 
 
 1 Lund University Cognitive Science, Lund University, Lund, Sweden
@@ -15,18 +15,18 @@ Pablo Arias Sarah (1,2,3,+), Daniel Bedoya(2), Christoph Daube(3), Jean-Julien A
 In this article we show that aligning the smiles of speed dating participants with smile transformation filters causally increases liking. In this repository you will find the python and R scripts to replicate all the analyses in both the main paper and the Supplementary Information. 
 
 ## Importing data
-To use these scripts please download the raw data online here : XXXX
-Put the raw data in the "data/" folder before executing the scripts
+To use these scripts please download the raw data online here : https://archive.org/details/data_20231023_20231023
+
+Put the raw data in the "data/" folder before executing the scripts.
 
 ## Analyses
 These analyses include:
+- Manipiulation Check
 - Behavior analyses
 - Facial mimicry anlayses
 - Synchrony analyses
 - Control analyses
 - Voice anlayses
 - Debriefing analyses
-- Manipiulation Check
 
-
-Please refer to the paper Supplementary Information for a precise description of the methods implemented in these analyses.
+Please refer to the paper's Supplementary Information for a precise description of the methods implemented in these analyses.

@@ -46,8 +46,8 @@ all_data=data.frame( relationship, participant_condition , interacting_partner, 
 
 # Choose the question you want to anlayse
 #question = "other_seeing_me_again" # Other seeing me again 
-#question = "good_conversation"    # Conversation quality data
-question = "seeing_again"         # Romantic attraction data
+question = "good_conversation"    # Conversation quality data
+#question = "seeing_again"         # Romantic attraction data
 #question = "smile"                # Other smile data
 
 
